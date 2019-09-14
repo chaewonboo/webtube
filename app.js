@@ -39,8 +39,8 @@ app.use(morgan("dev"));
 //글로벌 라우터를 하나 가진다 /join || /home || /search 이런걸 다루는거.
 // 두개의 라우터를 가짐 user/me || user/mypage 이런식으로 사용해도 됨
 app.use("/", globalRouter);
-app.use("/user", userRouter);
-app.use("/video", videoRouter);
+app.use("/users", userRouter);
+app.use("/videos", videoRouter);
 
 export default app;
 
