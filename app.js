@@ -3,6 +3,8 @@ import morgan from "morgan";
 import helmet from "helmet"
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+//export 를 default 로 안했을때는 이렇게 사용해야함.
+import { userRouter } from "./router"
 
 //babel 사용해서 최신 문법으로 바꿔줌 package.json 도 건들임.
 
@@ -15,14 +17,6 @@ const app = express();
 // const 로 선언한 변수에 express 를 담는거다(실행)
 // express import 한거임
 
-//handleListening 더 이쁘게 만드는법
-const PORT = 4000;
-
-function handleListening(){
-    console.log(`Listening on: http://localhost:${PORT}`);
-    // ` 랑 ' 이거 차이 ` 이게 더 높은거임
-    //서버 끄면 안에 있는 문장 나오게 하는거
-}
 function handleHome(req, res){
     //두개 req , res 를 호출함
     //정보를 얻고싶으면 누가 페이지에 접근했나 -> req object 사용
@@ -46,6 +40,9 @@ const handleProfile = (req, res) => res.send("You are on my profile");
 app.use(betweenHome);*/
 //이렇게 쓰면 웹사이트 어딜가던 middle ware 를 확인할수 있음
 
+
+//<!-- app object 들 -->
+
 //서버가 유저에 대해 이해하기 위한 middle ware 를 설치했다.
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -68,8 +65,10 @@ app.get("/", handleHome);
 
 app.get("/profile", handleProfile);
 
+//import 한 userRouter 에게 준거임
+//use -> 누군가 /user 에 접속하면 userRouter 를 사용하겠다는뜻.
+app.use("/user", userRouter);
 
-app.listen(PORT, handleListening);
-// 4000개의 포트를 앱이 들어라 라고 하는거임 리슨하기 시작하면 handleListening 함수 실행하라.
+//우리가 할꺼는 app.js 를 init.js 에서만 사용하게 하려는거임.(app object 를 주려는거)
+export default app;
 
-// hello world!!
