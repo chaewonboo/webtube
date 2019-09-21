@@ -7,7 +7,8 @@ import bodyParser from "body-parser";
 //controller 아니고 그냥 url 임 . 단지 url
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
-import globalRouter from "./routers/globalRouter"
+import globalRouter from "./routers/globalRouter";
+import routes from "./routes";
 
 //export 를 default 로 안했을때는 이렇게 사용해야함.
 //import { userRouter } from "./router"
@@ -38,9 +39,9 @@ app.use(morgan("dev"));
 //#2.9 내용 그냥 url 가짐.
 //글로벌 라우터를 하나 가진다 /join || /home || /search 이런걸 다루는거.
 // 두개의 라우터를 가짐 user/me || user/mypage 이런식으로 사용해도 됨
-app.use("/", globalRouter);
-app.use("/users", userRouter);
-app.use("/videos", videoRouter);
+app.use(routes.home, globalRouter);
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
 export default app;
 
