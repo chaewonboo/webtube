@@ -25,6 +25,7 @@ const app = express();
 // express import 한거임
 
 //<!-- app object 들 -->
+app.set("view engine", "pug");
 
 //서버가 유저에 대해 이해하기 위한 middle ware 를 설치했다.
 app.use(cookieParser());
