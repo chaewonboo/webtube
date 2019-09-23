@@ -1,13 +1,10 @@
-<!-- 복붙하려고 layout 만든거다 들여쓰기로 구분함. -->
-
-doctype html    
+doctype html
 html
     head
-        title WebTube
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.5.0/css/all.css", integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", crossorigin="anonymous")
+        title #{pageTitle} | #{siteName}
     body
-        header
-            h1 WebTube
+        include ../partials/header
         main
             block content
-        footer
-            span &copy; Webtube
+        include ../partials/footer
