@@ -2,15 +2,25 @@
 //독자적으로 url을 다루는 방법이 이런거다 router 를 사용.
 import express from "express";
 import routes from "../routes";
-import { home, Search, search } from "../controllers/videoController";
-import { join, login, logout } from "../controllers/userController";
+import { home, search } from "../controllers/videoController";
+import {
+    getJoin,
+    getLogin,
+    logout,
+    postJoin,
+    postLogin
+} from "../controllers/userController";
 
 const globalRouter = express.Router();
 
+globalRouter.get(routes.join, getJoin);
+globalRouter.post(routes.join, postJoin);
+
+globalRouter.get(routes.login, getLogin);
+globalRouter.post(routes.login, postLogin);
+
 globalRouter.get(routes.home, home);
 globalRouter.get(routes.search, search);
-globalRouter.get(routes.join, join);
-globalRouter.get(routes.login, login);
 globalRouter.get(routes.logout, logout);
 
 export default globalRouter;
