@@ -1,8 +1,15 @@
 import routes from "../routes";
+import Video from "../models/Video";
 
-export const home = (req, res) => {
-    res.render("home", { pageTitle: "Home", videos});
-};
+ export const home = async (req, res) => {
+   try {
+     const videos = await Video.find({});
+     res.render("home", { pageTitle: "Home", videos });
+   } catch (error) {
+     console.log(error);
+     res.render("home", { pageTitle: "Home", videos: [] });
+   }
+ };
 
 //검색할때 어떻게 나오게 할지에 대한 기능을 구현한 부분.
 export const search = (req, res) => {
