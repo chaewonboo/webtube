@@ -9,13 +9,14 @@ import {
     editVideo,
     deleteVideo
   } from "../controllers/videoController";
+import { uploadVideo } from "../middlewares";
 
 //밖에서 라우터들을 사용하게 하기위해 밖으로 보내는 export 를 앞에 붙임.
 const videoRouter = express.Router();
 
 
 videoRouter.get(routes.upload, getUpload);
-videoRouter.post(routes.upload, postUpload);
+videoRouter.post(routes.upload, uploadVideo, postUpload);
 videoRouter.get(routes.videoDetail(), videoDetail);
 videoRouter.get(routes.editVideo, editVideo);
 videoRouter.get(routes.deleteVideo, deleteVideo);

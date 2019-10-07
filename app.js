@@ -28,7 +28,7 @@ const app = express();
 //<!-- app object 들 -->
 app.use(helmet());
 app.set("view engine", "pug");
-
+app.use("/uploads", express.static("uploads"));
 //서버가 유저에 대해 이해하기 위한 middle ware 를 설치했다.
 app.use(cookieParser());
 app.use(bodyParser.json());
