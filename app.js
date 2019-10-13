@@ -10,7 +10,7 @@ import routes from "./routes";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
-
+ 
 //export 를 default 로 안했을때는 이렇게 사용해야함.
 //import { userRouter } from "./router"
 
@@ -29,6 +29,7 @@ const app = express();
 app.use(helmet());
 app.set("view engine", "pug");
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("static"));
 //서버가 유저에 대해 이해하기 위한 middle ware 를 설치했다.
 app.use(cookieParser());
 app.use(bodyParser.json());
