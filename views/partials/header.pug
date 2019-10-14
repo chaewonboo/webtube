@@ -1,23 +1,24 @@
 header.header
-    .header__column
-        a(href=routes.home)
-            i.fab.fa-youtube
-    //검색할때 url 에 get methoid 를 보내서 검색변수를 term 으로 만듬..
-    .header__column
-        form(action=routes.search, method="get")
-            input(type="text", placeholder = "Search by term...", name="term")
-    .header__column
-        ul
-            if !user.isAuthenticated
-                li
-                    a(href=routes.join) Join
-                li
-                    a(href=routes.login) Log In
-            else
-                li
-                    a(href=`/videos${routes.upload}`) Upload
-                li
-                    a(href=routes.userDetail(user.id)) Profile
-                li
-                    a(href=routes.logout) Log Out
+    .header__wrapper
+        .header__column
+            a(href=routes.home)
+                //여기 아이콘 바꾸는곳.
+                i.fab.fa-bitcoin
+        .header__column
+            form(action=routes.search, method="get")
+                input(type="text", placeholder="Search by term...", name="term")
+        .header__column
+            ul
+                if !user.isAuthenticated
+                    li
+                        a(href=routes.join) Join
+                    li
+                        a(href=routes.login) Log In
+                else
+                    li
+                        a(href=`/videos${routes.upload}`) Upload
+                    li
+                        a(href=routes.userDetail(user.id)) Profile
+                    li
+                        a(href=routes.logout) Log Out
             
